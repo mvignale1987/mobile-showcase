@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drawer_items">
+        <item>Retrofit</item>
+        <item>Picasso</item>
+        <item>EventBus</item>
+        <item>Otra cosa</item>
+    </string-array>
+
+</resources>
