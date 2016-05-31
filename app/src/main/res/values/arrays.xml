@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="drawer_items">
+    <string-array name="networking_items">
         <item>Retrofit</item>
         <item>Picasso</item>
+
+    </string-array>
+
+    <string-array name="mvp_items">
         <item>EventBus</item>
-        <item>Otra cosa</item>
+    </string-array>
+
+    <string-array name="google_items">
+        <item>Google Services</item>
+    </string-array>
+
+    <string-array name="drawer_groups">
+        <item>Networking-API</item>
+        <item>Google</item>
+        <item>UI</item>
+        <item>MVP</item>
     </string-array>
 
 </resources>
