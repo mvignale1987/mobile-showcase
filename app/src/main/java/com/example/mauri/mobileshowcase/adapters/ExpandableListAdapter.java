@@ -39,12 +39,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return mExpandableListMap.get(groupPosition).size();
+        return mExpandableListMap.get(groupPosition) != null ? mExpandableListMap.get(groupPosition).size() : 0;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return mExpandableListMap.get(groupPosition);
+        return items.get(groupPosition);
     }
 
     @Override
@@ -77,7 +77,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.drawer_text);
-        item.setTypeface(null, Typeface.BOLD);
         item.setText(drawerGroup);
         return convertView;
     }
