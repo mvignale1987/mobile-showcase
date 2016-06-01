@@ -1,15 +1,21 @@
 package com.example.mauri.mobileshowcase.activities;
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ExpandableListAdapter;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.example.mauri.retrofitexample.R;
+import com.example.mauri.mobileshowcase.adapters.ExpandableListAdapter;
 import com.example.mauri.mobileshowcase.app.ExampleApp;
+import com.example.mauri.retrofitexample.R;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -31,9 +37,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         mDrawerGroups = getResources().getStringArray(R.array.drawer_groups);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mDrawerList = (ExpandableListView) findViewById(R.id.left_drawer);
+        final RelativeLayout headerView = (RelativeLayout) View.inflate(this, R.layout.drawer_header, null);
+
+        ((TextView) headerView.findViewById(R.id.navigation_header_email)).setText(R.string.email);
+        ((TextView) headerView.findViewById(R.id.navigation_header_username)).setText(R.string.name);
 
         mExpandableListMap = new LinkedHashMap<>();
 
@@ -47,19 +66,23 @@ public class MainActivity extends AppCompatActivity {
             if (savedInstanceState != null) {
                 return;
             }
-            final ExpandableListAdapter expandableListAdapter = new com.example.mauri.mobileshowcase.adapters.ExpandableListAdapter(this, mExpandableListMap, Arrays.asList(mDrawerGroups));
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(this, mExpandableListMap, Arrays.asList(mDrawerGroups));
+            mDrawerList.addHeaderView(headerView);
             mDrawerList.setAdapter(expandableListAdapter);
             ExampleApp.screenManager.showAndroidVersions(this, "test");
         }
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        final ActionBar actionBar = getSupportActionBar();
 
-        if (actionBar != null) {
-            actionBar.setElevation(getResources().getDimension(R.dimen.toolbar_elevation));
-            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
-            actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }
