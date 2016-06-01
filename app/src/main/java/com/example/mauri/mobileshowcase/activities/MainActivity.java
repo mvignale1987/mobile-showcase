@@ -2,7 +2,9 @@ package com.example.mauri.mobileshowcase.activities;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -49,10 +51,16 @@ public class MainActivity extends AppCompatActivity {
             mDrawerList.setAdapter(expandableListAdapter);
             ExampleApp.screenManager.showAndroidVersions(this, "test");
         }
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
 
+        if (actionBar != null) {
+            actionBar.setElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
-    private void populateExpandableListMap(){
 
-    }
 }
 
