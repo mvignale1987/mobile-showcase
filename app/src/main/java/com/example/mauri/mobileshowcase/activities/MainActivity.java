@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.example.mauri.mobileshowcase.adapters.ExpandableListAdapter;
 import com.example.mauri.mobileshowcase.app.ExampleApp;
+import com.example.mauri.mobileshowcase.utils.ExpandableListUtils;
 import com.example.mauri.retrofitexample.R;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -25,7 +27,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[] mDrawerGroups;
+    private List<String> mDrawerGroups;
     private DrawerLayout mDrawerLayout;
     private ExpandableListView mDrawerList;
     private Map<String, List<String>> mExpandableListMap ;
@@ -45,29 +47,22 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        mDrawerGroups = getResources().getStringArray(R.array.drawer_groups);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mDrawerList = (ExpandableListView) findViewById(R.id.left_drawer);
         final RelativeLayout headerView = (RelativeLayout) View.inflate(this, R.layout.drawer_header, null);
 
         ((TextView) headerView.findViewById(R.id.navigation_header_email)).setText(R.string.email);
         ((TextView) headerView.findViewById(R.id.navigation_header_username)).setText(R.string.name);
 
-        mExpandableListMap = new LinkedHashMap<>();
-
-        mExpandableListMap.put(mDrawerGroups[0],Arrays.asList(getResources().getStringArray(R.array.networking_items)));
-        mExpandableListMap.put(mDrawerGroups[1],Arrays.asList(getResources().getStringArray(R.array.google_items)));
-        mExpandableListMap.put(mDrawerGroups[3],Arrays.asList(getResources().getStringArray(R.array.mvp_items)));
-
+        mExpandableListMap = ExpandableListUtils.getData(getResources());
+        mDrawerGroups = Arrays.asList(getResources().getStringArray(R.array.drawer_groups));
 
         if (findViewById(R.id.fragment_container) != null) {
 
             if (savedInstanceState != null) {
                 return;
             }
-            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-            final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(this, mExpandableListMap, Arrays.asList(mDrawerGroups));
+            final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(this, mExpandableListMap, mDrawerGroups);
             mDrawerList.addHeaderView(headerView);
             mDrawerList.setAdapter(expandableListAdapter);
             ExampleApp.screenManager.showAndroidVersions(this, "test");

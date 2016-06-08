@@ -5,4 +5,5 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="status_bar_height">75dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
+    <dimen name="cell_vertical_padding">8dp</dimen>
 </resources>

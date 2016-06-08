@@ -3,7 +3,6 @@
     <string-array name="networking_items">
         <item>Retrofit</item>
         <item>Picasso</item>
-
     </string-array>
 
     <string-array name="mvp_items">

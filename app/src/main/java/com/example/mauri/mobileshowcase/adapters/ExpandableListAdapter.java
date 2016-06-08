@@ -3,6 +3,7 @@ package com.example.mauri.mobileshowcase.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +26,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Map<String, List<String>> mExpandableListMap;
     private List<String> items;
 
-
     public ExpandableListAdapter(Activity context, Map<String, List<String>> mExpandableListMap, List<String> items) {
         this.context = context;
         this.mExpandableListMap = mExpandableListMap;
         this.items = items;
+
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return mExpandableListMap.get(groupPosition) != null ? mExpandableListMap.get(groupPosition).size() : 0;
+        return mExpandableListMap.get(items.get(groupPosition)) != null ? mExpandableListMap.get(items.get(groupPosition)).size() : 0;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return mExpandableListMap.get(groupPosition).get(childPosition);
+        return mExpandableListMap.get(items.get(groupPosition)).get(childPosition);
     }
 
     @Override
@@ -76,21 +77,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.drawer_list_group,
                     null);
         }
-        TextView item = (TextView) convertView.findViewById(R.id.drawer_text);
+        TextView item = (TextView) convertView.findViewById(R.id.drawer_text_group);
         item.setText(drawerGroup);
+//        chooseGroupBackground(groupPosition,convertView,isExpanded);
         return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final String drawerItem = (String) getChild(groupPosition, childPosition);
-        LayoutInflater inflater = context.getLayoutInflater();
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.drawer_list_item, null);
+            LayoutInflater infalInflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.drawer_list_item, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.drawer_text);
+        TextView item = (TextView) convertView.findViewById(R.id.drawer_text_child);
 
         item.setText(drawerItem);
         return convertView;
@@ -100,4 +103,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+    @Override
+    public void onGroupExpanded(int groupPosition) {
+        super.onGroupExpanded(groupPosition);
+    }
+
+    @Override
+    public void onGroupCollapsed(int groupPosition) {
+        super.onGroupCollapsed(groupPosition);
+    }
+
 }
