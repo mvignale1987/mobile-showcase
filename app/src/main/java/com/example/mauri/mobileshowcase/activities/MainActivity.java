@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) headerView.findViewById(R.id.navigation_header_email)).setText(R.string.email);
         ((TextView) headerView.findViewById(R.id.navigation_header_username)).setText(R.string.name);
-
+//        ((ImageView) headerView.findViewById(R.id.navigation_header_avatar)).setImageDrawable(getResources().getDrawable(R.drawable.profile_placeholder));
         mExpandableListMap = ExpandableListUtils.getData(getResources());
         mDrawerGroups = Arrays.asList(getResources().getStringArray(R.array.drawer_groups));
 
