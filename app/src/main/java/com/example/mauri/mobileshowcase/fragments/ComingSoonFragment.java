@@ -17,15 +17,12 @@ import com.example.mauri.retrofitexample.R;
 
 public class ComingSoonFragment extends Fragment {
 
-    private RecyclerView recyclerView;
     private View mRootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.coming_soon_fragment,container,false);
-        TextView comingSoonTv = ((TextView) mRootView.findViewById(R.id.coming_soon_tv));
-        comingSoonTv.setText(getResources().getString(R.string.coming_soon_text));
         return mRootView;
     }
 }
