@@ -1,7 +1,9 @@
 package com.example.mauri.mobileshowcase.managers;
 
 import android.support.v4.app.FragmentActivity;
+import android.widget.ExpandableListView;
 
+import com.example.mauri.mobileshowcase.fragments.ComingSoonFragment;
 import com.example.mauri.retrofitexample.R;
 import com.example.mauri.mobileshowcase.fragments.AndroidVersionFragment;
 
@@ -14,6 +16,11 @@ public class ScreenManager {
 
     public void showAndroidVersions(FragmentActivity origin, String actionbarTitle) {
         AndroidVersionFragment fragment = new AndroidVersionFragment();
+        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+    }
+
+    public void showComingSoon(FragmentActivity origin, String select) {
+        ComingSoonFragment fragment = new ComingSoonFragment();
         origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 }
