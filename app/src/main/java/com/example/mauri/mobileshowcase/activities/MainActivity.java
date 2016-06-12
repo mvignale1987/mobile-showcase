@@ -56,18 +56,39 @@ public class MainActivity extends AppCompatActivity {
 //        ((ImageView) headerView.findViewById(R.id.navigation_header_avatar)).setImageDrawable(getResources().getDrawable(R.drawable.profile_placeholder));
         mExpandableListMap = ExpandableListUtils.getData(getResources());
         mDrawerGroups = Arrays.asList(getResources().getStringArray(R.array.drawer_groups));
+        final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(this, mExpandableListMap, mDrawerGroups);
+        mDrawerList.addHeaderView(headerView);
+        mDrawerList.setAdapter(expandableListAdapter);
+        mDrawerList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String select = expandableListAdapter.getChild(groupPosition,childPosition).toString();
+                selectItem(select);
+                return false;
+            }
+        });
 
         if (findViewById(R.id.fragment_container) != null) {
-
             if (savedInstanceState != null) {
                 return;
             }
-            final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(this, mExpandableListMap, mDrawerGroups);
-            mDrawerList.addHeaderView(headerView);
-            mDrawerList.setAdapter(expandableListAdapter);
             ExampleApp.screenManager.showAndroidVersions(this, "test");
         }
 
+    }
+
+    private void selectItem(String select) {
+
+        switch (select){
+            case "Retrofit":
+                ExampleApp.screenManager.showAndroidVersions(this,select);
+                break;
+            default:
+                ExampleApp.screenManager.showComingSoon(this, select);
+                break;
+
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
     @Override

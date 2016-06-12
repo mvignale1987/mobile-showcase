@@ -34,9 +34,9 @@
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
             android:background="@color/colorPrimary"
-            android:divider="@null"
+            android:divider="@color/colorPrimaryDark"
             android:groupIndicator="@null"
-            android:dividerHeight="0dp" />
+            android:dividerHeight="1px" />
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>
