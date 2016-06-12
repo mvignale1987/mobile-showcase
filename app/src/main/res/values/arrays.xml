@@ -20,11 +20,17 @@
         <item>Animations</item>
     </string-array>
 
+    <string-array name="storage_items">
+        <item>SQLite</item>
+        <item>Shared Properties</item>
+    </string-array>
+
     <string-array name="drawer_groups">
         <item>Networking-API</item>
         <item>Google</item>
         <item>UI</item>
         <item>MVP</item>
+        <item>Storage</item>
         <item>NDK</item>
     </string-array>
 

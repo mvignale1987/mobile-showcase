@@ -21,6 +21,7 @@ public class ExpandableListUtils {
         expandableListDetail.put(Arrays.asList(res.getStringArray(R.array.drawer_groups)).get(1), Arrays.asList(res.getStringArray(R.array.google_items)));
         expandableListDetail.put(Arrays.asList(res.getStringArray(R.array.drawer_groups)).get(2),Arrays.asList(res.getStringArray(R.array.ui_items)));
         expandableListDetail.put(Arrays.asList(res.getStringArray(R.array.drawer_groups)).get(3),Arrays.asList(res.getStringArray(R.array.mvp_items)));
+        expandableListDetail.put(Arrays.asList(res.getStringArray(R.array.drawer_groups)).get(4),Arrays.asList(res.getStringArray(R.array.storage_items)));
 
         return expandableListDetail;
     }
