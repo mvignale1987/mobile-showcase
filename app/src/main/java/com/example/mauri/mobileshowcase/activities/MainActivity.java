@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,9 +17,7 @@ import com.example.mauri.mobileshowcase.app.ExampleApp;
 import com.example.mauri.mobileshowcase.utils.ExpandableListUtils;
 import com.example.mauri.retrofitexample.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) headerView.findViewById(R.id.navigation_header_email)).setText(R.string.email);
         ((TextView) headerView.findViewById(R.id.navigation_header_username)).setText(R.string.name);
-//        ((ImageView) headerView.findViewById(R.id.navigation_header_avatar)).setImageDrawable(getResources().getDrawable(R.drawable.profile_placeholder));
         mExpandableListMap = ExpandableListUtils.getData(getResources());
         mDrawerGroups = Arrays.asList(getResources().getStringArray(R.array.drawer_groups));
         final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(this, mExpandableListMap, mDrawerGroups);
@@ -68,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (findViewById(R.id.fragment_container) != null) {
+        if (findViewById(R.id.fragment_container1) != null) {
             if (savedInstanceState != null) {
                 return;
             }
@@ -82,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         switch (select){
             case "Retrofit":
                 ExampleApp.screenManager.showAndroidVersions(this,select);
+                break;
+            case "EventBus":
+                ExampleApp.screenManager.showEventBus(this,select);
                 break;
             default:
                 ExampleApp.screenManager.showComingSoon(this, select);
