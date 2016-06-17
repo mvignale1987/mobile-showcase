@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/coming_soon_tv"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="@string/coming_soon_text"

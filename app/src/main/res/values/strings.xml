@@ -3,5 +3,7 @@
     <string name="name">Mauricio Vignale</string>
     <string name="email">mvignale1987@gmail.com</string>
     <string name="coming_soon_text">Coming Soon!</string>
-    <string name="eventbus_text">Insert text that will be posted via EventBus</string>
+    <string name="eventbus_text">Insert text that will be processed via MVP</string>
+    <string name="eventbus_ok_text">Well done!</string>
+    <string name="eventbus_error_text">Oh Noes!</string>
 </resources>

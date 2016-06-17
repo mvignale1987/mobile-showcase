@@ -18,16 +18,16 @@ public class ScreenManager {
 
     public void showAndroidVersions(FragmentActivity origin, String actionbarTitle) {
         AndroidVersionFragment fragment = new AndroidVersionFragment();
-        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container1, fragment).commit();
+        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
     public void showComingSoon(FragmentActivity origin, String select) {
         ComingSoonFragment fragment = new ComingSoonFragment();
-        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container1, fragment).commit();
+        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
     public void showEventBus(FragmentActivity origin, String select) {
         EventBusFragment fragment = new EventBusFragment();
-        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container1, fragment).commit();
+        origin.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 }

@@ -23,16 +23,16 @@
         android:layout_below="@+id/eventbus_tv"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:id="@+id/eventbus_et"
+        android:layout_toLeftOf="@+id/eventbus_button"
+        android:layout_toStartOf="@+id/eventbus_button" />
 
     <Button
         android:text="Post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_alignBottom="@+id/editText"
+        android:id="@+id/eventbus_button"
+        android:layout_alignBottom="@+id/eventbus_tv"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
