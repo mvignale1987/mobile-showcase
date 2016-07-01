@@ -34,11 +34,6 @@ public class EventBusFragment extends Fragment implements DataInputView, View.On
         eventbusTxt = (EditText) mRootView.findViewById(R.id.eventbus_et);
         (mRootView.findViewById(R.id.eventbus_button)).setOnClickListener(this);
         progressBar = new ProgressDialog(getActivity());
-        progressBar.setCancelable(true);
-        progressBar.setMessage("File downloading ...");
-        progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressBar.setProgress(0);
-        progressBar.setMax(100);
         eventBusPresenter = new EventBusPresenterImpl(this);
         return mRootView;
     }

@@ -32,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/eventbus_button"
-        android:layout_alignBottom="@+id/eventbus_tv"
+        android:layout_alignBaseline="@+id/eventbus_et"
+        android:layout_alignBottom="@+id/eventbus_et"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
